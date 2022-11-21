@@ -10,7 +10,7 @@
                         <div class="breadcrumb__text">
                             <h2>Our Projects</h2>
                             <div class="breadcrumb__links">
-                                <a href="./index.html">Home</a>
+                                <a href="/">Home</a>
                                 <span>Projects</span>
                             </div>
                         </div>

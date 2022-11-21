@@ -1,6 +1,6 @@
 <div id="kt_header_mobile" class="header-mobile">
     <!--begin::Logo-->
-    <a href="index.html">
+    <a href="/">
         <img alt="Logo" src="image/logo/logo.png" class="max-h-30px" />
     </a>
     <!--end::Logo-->
@@ -33,7 +33,7 @@
         <!--begin::Left-->
         <div class="d-none d-lg-flex align-items-center mr-3">
             <!--begin::Logo-->
-            <a href="index.html" class="mr-20">
+            <a href="/" class="mr-20">
                 <img alt="Logo" src="image/logo/logo.png" class="logo-default max-h-75px" />
             </a>
             <!--end::Logo-->

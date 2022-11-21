@@ -809,7 +809,7 @@ class DashboardController extends Controller
 
     # Save Order Content
     public function onSaveOrder(Request $request){
-        console.log($request);
+        var_dump($request);
         // PaintedDoorOrderContent::create([
         //         'serial_number'     => Session::get('SerialNumber'),
         //         'user_id'           => Session::get('isLogin'),
@@ -842,8 +842,7 @@ class DashboardController extends Controller
 
     # To Order Content
     public function toPaintedDoor(Request $request){
-        // return $request;
-
+        $title = 'First Step';
         $header = "forms";
         $cabinets = Cabinets::get();
         $finish = Finish::get();
@@ -855,6 +854,7 @@ class DashboardController extends Controller
         Session::put('SerialNumber', $serial_number);
         $serial_number = Session::get('SerialNumber');
         return view('Form.painted_order', [
+            'title'     => $title,
             'header'    => $header,
             'cabinets'  => $cabinets,
             'finish'    => $finish,
@@ -866,11 +866,13 @@ class DashboardController extends Controller
     }
 
     public function toPaintedDoorFirst(){
+        $title = "First Step";
         $serial_number = strtotime('now');
         Session::put('SerialNumber', $serial_number);
         $serial_number = Session::get('SerialNumber');
 
         return view('Form.painted_door.first_step', [
+            'title'         => $title,
             'SerialNumber'  => $serial_number,
         ]);
     }
@@ -908,13 +910,15 @@ class DashboardController extends Controller
     public function toPaintedDoorSecond(){
         // $door_category = 1;
         // $doorstyle = DoorStyle::where('category_id', $door_category)->get();
+        $title = "Second Step";
         $doorstyle = DoorCategory::get();
         $finish = Finish::get();
 
         return view('Form.painted_door.second_step', [
+                        'title'             => $title,
                         'doorstyle'         => $doorstyle,
                         'finish'            => $finish,
-                        'SerialNumber'     => Session::get('SerialNumber'),
+                        'SerialNumber'      => Session::get('SerialNumber'),
                     ]);
     }
 
@@ -956,6 +960,7 @@ class DashboardController extends Controller
         $chosenData['edge_profile']          = Session::get('edge_profile');
         $chosenData['material_thickness']    = Session::get('material_thickness');
 
+        $title = "Third Step";
         $header = "forms";
         $cabinets = Cabinets::get();
         $finish = Finish::get();
@@ -964,6 +969,7 @@ class DashboardController extends Controller
         $doorstyle = DoorCategory::get();
 
         return view('Form.painted_door.third_step', [
+            'title'         => $title,
             'header'        => $header,
             'cabinets'      => $cabinets,
             'finish'        => $finish,
@@ -976,9 +982,11 @@ class DashboardController extends Controller
     }
 
     public function toPaintedDoorFourth(Request $request){
+        $title = 'Final Step';
         $SerialNumber = Session::get('SerialNumber');
 
         return view('Form.painted_door.fourth_step', [
+            'title'             => $title,
             'SerialNumber'      => $SerialNumber,
 
         ]);

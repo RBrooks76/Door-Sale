@@ -77,15 +77,18 @@ Route::get('/admin/admin',              'AdminController@toAdminList')          
 Route::get('/admin/user',               'AdminController@toUserList')                       ->name('toUserList');
 Route::get('/admin/upload',             'AdminController@toUploadImage')                    ->name('toUploadImage');
 
-
 Route::post('/admin_signin',            'AdminController@onAdminSignin')                    ->name('onAdminSignin');
 Route::get('/admin_signout',            'AdminController@onAdminSignout')                   ->name('onAdminSignout');
 Route::post('/admin_signup',            'AdminController@onAdminSignup')                    ->name('onAdminSignup');
 Route::post('/onGetAdminList',          'AdminController@onGetAdminList')                   ->name('onGetAdminList');
 Route::post('/onGetUserList',           'AdminController@onGetUserList')                    ->name('onGetUserList');
 
-Route::post('/admin_usersignup',         'Admincontroller@onUserSignup')                     ->name('onUserSignup');
 
+
+Route::post('/admin_usersignup',        'Admincontroller@onUserSignup')                     ->name('onUserSignup');
+Route::post('admin_user_delete',        'Admincontroller@onDeleteUser')                     ->name('onDeleteUser');
+Route::post('/admin/onGetChangeUser',   'AdminController@onGetChangeUser')                  ->name('onGetChangeUser');
+Route::post('/admin/onChangeUser',      'AdminController@onChangeUser')                     ->name('onChangeUser');
 
 Route::get('/door-style',               'AdminController@toDoorStyle')                      ->name('toDoorStyle');
 Route::post('/doorstyle',               'AdminController@onDoorStyle')                      ->name('onDoorStyle');

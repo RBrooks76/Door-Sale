@@ -78,44 +78,51 @@ var KTDatatableRemoteAjaxDemo = function() {
             // }, {
             //     field: 'CompanyName',
             //     title: 'Company Name',
-            // }, {
-            //     field: 'Status',
-            //     title: 'Status',
-            //     // callback function support for column rendering
-            //     template: function(row) {
-            //         var status = {
-            //             1: {
-            //                 'title': 'Pending',
-            //                 'class': ' label-light-success'
-            //             },
-            //             2: {
-            //                 'title': 'Delivered',
-            //                 'class': ' label-light-danger'
-            //             },
-            //             3: {
-            //                 'title': 'Canceled',
-            //                 'class': ' label-light-primary'
-            //             },
-            //             4: {
-            //                 'title': 'Success',
-            //                 'class': ' label-light-success'
-            //             },
-            //             5: {
-            //                 'title': 'Info',
-            //                 'class': ' label-light-info'
-            //             },
-            //             6: {
-            //                 'title': 'Danger',
-            //                 'class': ' label-light-danger'
-            //             },
-            //             7: {
-            //                 'title': 'Warning',
-            //                 'class': ' label-light-warning'
-            //             },
-            //         };
-            //         return '<span class="label font-weight-bold label-lg ' + status[row.Status].class + ' label-inline">' + status[row.Status].title + '</span>';
-            //     },
-            // }, {
+            // },
+            {
+                field: 'verified',
+                title: 'Status',
+                width: 80,
+                // callback function support for column rendering
+                template: function(row) {
+                    console.log(row);
+                    var status = {
+                        0: {
+                            'title': 'Pending',
+                            'class': ' flaticon2-cancel color-danger',
+                            'image': '<i class="icon-2x text-dark-50 "></i>'
+                        },
+                        1: {
+                            'title': 'Active',
+                            'class': ' flaticon2-check-mark color-success',
+                            'image': '<i class="icon-2x text-dark-50 flaticon2-cancel"></i>'
+                        },
+                        2: {
+                            'title': 'Delivered',
+                            'class': ' label-light-danger'
+                        },
+                        3: {
+                            'title': 'Canceled',
+                            'class': ' label-light-primary'
+                        },
+                        5: {
+                            'title': 'Info',
+                            'class': ' label-light-info'
+                        },
+                        6: {
+                            'title': 'Danger',
+                            'class': ' label-light-danger'
+                        },
+                        7: {
+                            'title': 'Warning',
+                            'class': ' label-light-warning'
+                        },
+                    };
+                    console.log(status[row.verified].class);
+                    console.log(status[row.verified].title);
+                    return  `<div class=''><i class="` + status[row.verified].class + ` label-inline">` + `</i></div>`;
+                },
+            },
             //     field: 'Type',
             //     title: 'Type',
             //     autoHide: false,
@@ -143,11 +150,11 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'Actions',
                 title: 'Actions',
                 sortable: false,
-                width: 125,
+                width: 90,
                 overflow: 'visible',
                 autoHide: false,
                 template: function(row) {
-                    return `<a class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details" onclick="onEdit(` + row.id + `)">`+
+                    return `<a class="btn btn-icon btn-light-success btn-circle btn-sm mr-2 font-weight-bolder font-size-sm" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#editUser" style="margin-right: 3px" onclick="onEdit(` + row.id + `, this)">`+
                             `<span class="svg-icon svg-icon-md">\
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -158,7 +165,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                                 </svg>\
                             </span>\
                         </a>` +
-                        `<a class="btn btn-sm btn-clean btn-icon" title="Delete" onclick="onDelete(` + row.id + `)">\
+                        `<a class="btn btn-icon btn-light-danger btn-circle btn-sm mr-2" title="Delete" onclick="onDelete(` + row.id + `, this)">\
                             <span class="svg-icon svg-icon-md">\
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\

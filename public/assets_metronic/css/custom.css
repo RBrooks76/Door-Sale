@@ -1,6 +1,6 @@
 body{
-    /* height: auto; */
-    height : 100%;
+    height: auto;
+    /* height : 100%; */
 }
 
 .flex{
@@ -75,4 +75,16 @@ body{
 
 .font-weight-700{
     font-weight: 700;
+}
+
+.color-danger{
+    color: #F64E60;
+}
+
+.color-success{
+    color: #1BC5BD;
+}
+
+.body-height{
+    height: 100%;
 }

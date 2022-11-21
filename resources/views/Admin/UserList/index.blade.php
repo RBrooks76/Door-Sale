@@ -88,6 +88,56 @@
                                             <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
 
                                             </div>
+                                            <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div data-scroll="true" data-height="300">
+                                                                <form class="form pt-9" method="POST" action="{{ route('onChangeUser') }}">
+                                                                    @csrf
+                                                                    <input type="hidden" name="change_user_id" id="change_user_id" value="">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Email Address</label>
+                                                                        <div class="col-lg-9 col-xl-6">
+                                                                            <div class="input-group input-group-lg input-group-solid">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                        <i class="la la-at"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Email" name="change_email"  id="change_email"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Password</label>
+                                                                        <div class="col-lg-9 col-xl-6">
+                                                                            <input class="form-control form-control-lg form-control-solid" type="text" placeholder="password" name="change_password" id="change_password"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Verified</label>
+                                                                        <div class="col-lg-1">
+                                                                            <input class="form-control form-control-lg form-control-solid" type="checkbox" name="change_verified" id="change_verified"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-primary font-weight-bold">Save</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!--end::Datatable-->
                                         </div>
                                         <!--end::Body-->
@@ -124,19 +174,50 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-	<script src="assets_metronic/js/pages/custom/education/school/data-user.js"></script>
+<script src="assets_metronic/js/pages/custom/education/school/data-user.js"></script>
     <script>
 
         $(document).ready(function(){
             KTDatatableRemoteAjaxDemo.init();
         });
 
-        function onDelete(id){
+        function onDelete(id, element){
+            $(element).parent().parent().parent().hide();
+            $.ajax({
+                type : 'POST',
+                url  : "{{ route('onDeleteUser') }}",
+                data : {
+                    _token  : "{{ csrf_token() }}",
+                    id      : id,
+                },
+                success:function(response){
 
+                }
+
+            })
         }
 
         function onEdit(id){
-            alert(id);
+            $('#change_user_id').val(id);
+            $.ajax({
+                type : 'POST',
+                url  : "{{ route('onGetChangeUser') }}",
+                data : {
+                    _token  : "{{ csrf_token() }}",
+                    id      : id,
+                },
+                success:function(response){
+                    $('#change_email').val(response.email);
+                    $('#change_password').val(response.password);
+                    if(response.verified == 1){
+                        $('#change_verified').prop('checked', true);
+                    } else {
+                        $('#change_verified').prop('checked', false);
+                    }
+                }
+
+            })
+
         }
     </script>
 @endsection('content')

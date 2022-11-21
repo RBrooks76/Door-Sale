@@ -47,7 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" class="header-fixed subheader-enabled page-loading">
+	<body id="kt_body" class="header-fixed subheader-enabled page-loading {{ $adminLogin == 'adminLogin' ? "body-height" : ""}}">
 
         <!--begin::Main-->
         @yield('content')

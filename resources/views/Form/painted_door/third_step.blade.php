@@ -5,7 +5,7 @@
     <div class="d-flex flex-row flex-column-fluid page">
         <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
             <div id="kt_header_mobile" class="header-mobile">
-                <a href="index.html">
+                <a href="/">
                     <img alt="Logo" src="image/logo/logo.png" class="max-h-30px" />
                 </a>
                 <div class="d-flex align-items-center">
@@ -122,7 +122,7 @@
                                                     <textarea rows="10" class="table-input" name="comment" id="comment"></textarea>
                                                 </td>
                                                 <td rowspan="5">
-                                                    <button type="button" class="btn btn-primary" onclick="onSaveOrder('')">@Save</button>
+                                                    <button type="button" class="btn btn-primary" onclick="onSaveOrder('')">Save</button>
                                                 </td>
                                             </tr>
                                             <tr id="second_row">

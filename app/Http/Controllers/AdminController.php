@@ -15,6 +15,8 @@ class AdminController extends Controller
     //
 
     public function index(){
+        $adminLogin = 'adminLogin';
+
         $is = Admin::where('type', 0)->first();
         if(!$is){
             Admin::create([
@@ -24,7 +26,9 @@ class AdminController extends Controller
             ]);
         }
 
-        return view('Admin.Auth.index');
+        return view('Admin.Auth.index', [
+            'adminLogin' => $adminLogin
+        ]);
     }
 
     public function onAdminSignin(Request $request){
@@ -67,6 +71,7 @@ class AdminController extends Controller
         User::create([
             'email'         => $valid['email'],
             'password'      => $valid['password'],
+            'verified'      => 0
         ]);
 
         return redirect()->route('toUserList');
@@ -78,9 +83,11 @@ class AdminController extends Controller
     }
 
     public function toAdminList(){
+        $adminLogin = '';
         $nav = 'AdminList';
         return view('Admin.AdminList.index',[
                 'nav'   => $nav,
+                'adminLogin'    =>$adminLogin
         ]);
     }
 
@@ -94,9 +101,11 @@ class AdminController extends Controller
     }
 
     public function toUserList(){
+        $adminLogin = '';
         $nav = 'UserList';
         return view('Admin.UserList.index',[
-                'nav' => $nav,
+                'nav'           => $nav,
+                'adminLogin'    =>$adminLogin
         ]);
     }
 
@@ -155,6 +164,30 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('toHingeType');
+    }
+
+    public function onDeleteUser(Request $request){
+        User::where('id', $request->id)
+            ->delete();
+    }
+
+    public function onGetChangeUser(Request $request){
+        return User::where('id', $request->id)->first();
+    }
+
+    public function onChangeUser(Request $request){
+        $verified = 0;
+        if($request->change_verified == 'on'){
+            $verified = 1;
+        }
+        User::where('id', $request->change_user_id)
+            ->update([
+                'email'     => $request->change_email,
+                'password'  => $request->change_password,
+                'verified'  => $verified
+            ]);
+
+        return redirect()->route('toUserList');
     }
 
 }
