@@ -122,7 +122,7 @@
                                                     <textarea rows="10" class="table-input" name="comment" id="comment"></textarea>
                                                 </td>
                                                 <td rowspan="5">
-                                                    <button type="button" class="btn btn-primary" onclick="onSaveOrder('')">Save</button>
+                                                    <button type="button" class="btn btn-primary" onclick="onSaveOrder('')">@Save</button>
                                                 </td>
                                             </tr>
                                             <tr id="second_row">
@@ -791,50 +791,50 @@
         }
 
         function onCalculation(index){
-            var category = $('#door_category' + index).val();
-            var style = $('#finish_style' + index).val();
-            var finish = $('#finish_finish' + index).val();
-            var material = $('#finish_material' + index).val();
-            var finish_first    = $('#finish_first' + index).val();
-            var finish_second   = $('#finish_second' + index).val();
-            var finish_third    = $('#finish_third' + index).val();
-            var finish_fourth   = $('#finish_fourth' + index).val();
-            var finish_fifth    = $('#finish_fifth' + index).val();
-            var finish_sixth    = $('#finish_sixth' + index).val();
-            var hardware_first    = $('#hardware_first' + index).val();
-            var hardware_second   = $('#hardware_second' + index).val();
-            var hardware_third    = $('#hardware_third' + index).val();
-            var hardware_fourth   = $('#hardware_fourth' + index).val();
-            var hardware_fifth    = $('#hardware_fifth' + index).val();
-            var dimension_first = $('#dimension_first' + index).val();
-            var dimension_second = $('#dimension_second' + index).val();
-            var dimension_third = $('#dimension_third' + index).val();
-            var dimension_fourth = $('#dimension_fourth' + index).val();
+            var category            = $('#door_category'    + index).val();
+            var style               = $('#finish_style'     + index).val();
+            var finish              = $('#finish_finish'    + index).val();
+            var material            = $('#finish_material'  + index).val();
+            var finish_first        = $('#finish_first'     + index).val();
+            var finish_second       = $('#finish_second'    + index).val();
+            var finish_third        = $('#finish_third'     + index).val();
+            var finish_fourth       = $('#finish_fourth'    + index).val();
+            var finish_fifth        = $('#finish_fifth'     + index).val();
+            var finish_sixth        = $('#finish_sixth'     + index).val();
+            var hardware_first      = $('#hardware_first'   + index).val();
+            var hardware_second     = $('#hardware_second'  + index).val();
+            var hardware_third      = $('#hardware_third'   + index).val();
+            var hardware_fourth     = $('#hardware_fourth'  + index).val();
+            var hardware_fifth      = $('#hardware_fifth'   + index).val();
+            var dimension_first     = $('#dimension_first'  + index).val();
+            var dimension_second    = $('#dimension_second' + index).val();
+            var dimension_third     = $('#dimension_third'  + index).val();
+            var dimension_fourth    = $('#dimension_fourth' + index).val();
 
             $.ajax({
                 type : 'POST',
                 url  : '{{ route('onCalculation') }}',
                 data : {
                     _token      : '{{ csrf_token() }}',
-                    category    : category,
-                    style       : style,
-                    finish      : finish,
-                    material    : material,
-                    finish_first    : finish_first,
-                    finish_second   : finish_second,
-                    finish_third    : finish_third,
-                    finish_fourth   : finish_fourth,
-                    finish_fifth    : finish_fifth,
-                    finish_sixth    : finish_sixth,
-                    hardware_first    : hardware_first,
-                    hardware_second   : hardware_second,
-                    hardware_third    : hardware_third,
-                    hardware_fourth   : hardware_fourth,
-                    hardware_fifth    : hardware_fifth,
-                    dimension_first   : dimension_first,
-                    dimension_second  : dimension_second,
-                    dimension_third   : dimension_third,
-                    dimension_fourth   : dimension_fourth,
+                    category            : category,
+                    style               : style,
+                    finish              : finish,
+                    material            : material,
+                    finish_first        : finish_first,
+                    finish_second       : finish_second,
+                    finish_third        : finish_third,
+                    finish_fourth       : finish_fourth,
+                    finish_fifth        : finish_fifth,
+                    finish_sixth        : finish_sixth,
+                    hardware_first      : hardware_first,
+                    hardware_second     : hardware_second,
+                    hardware_third      : hardware_third,
+                    hardware_fourth     : hardware_fourth,
+                    hardware_fifth      : hardware_fifth,
+                    dimension_first     : dimension_first,
+                    dimension_second    : dimension_second,
+                    dimension_third     : dimension_third,
+                    dimension_fourth    : dimension_fourth,
                 },
                 success:function(response){
                     var amount = parseFloat(response).toFixed(2);
@@ -1325,8 +1325,7 @@
             //     console.log(arr);
             // for(let i = 0; i < arr.length; i++){
 
-            // }
-
+            //
             window.location.href = "{{route('toPaintedDoorFourth')}}";
         }
 
