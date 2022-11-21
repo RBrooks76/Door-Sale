@@ -86,7 +86,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu menu-item-rel {{ $nav == 'student' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+                <li class="menu-item menu-item-submenu menu-item-rel {{ $nav == 'orders' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
                     <a href="" class="menu-link menu-toggle">
                         <span class="menu-text">Order List</span>
                         <span class="menu-desc"></span>

@@ -174,7 +174,7 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-<script src="assets_metronic/js/pages/custom/education/school/data-user.js"></script>
+<script src="assets_metronic/js/pages/custom/education/school/data-order-list.js"></script>
     <script>
 
         $(document).ready(function(){

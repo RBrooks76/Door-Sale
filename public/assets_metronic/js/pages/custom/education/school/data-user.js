@@ -47,45 +47,21 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             // columns definition
             columns: [
-            // {
-            //     field: 'RecordID',
-            //     title: '#',
-            //     sortable: 'asc',
-            //     width: 30,
-            //     type: 'number',
-            //     selector: false,
-            //     textAlign: 'center',
-            // },
             {
                 field: 'email',
                 title: 'Email',
+                sortable: 'asc',
             }, {
                 field: 'password',
                 title: 'Password',
+                sortable: 'asc',
             },
-            // {
-            //     field: 'Country',
-            //     title: 'Country',
-            //     template: function(row) {
-            //         return row.Country + ' ' + row.ShipCountry;
-            //     },
-            // },
-            // {
-            //     field: 'ShipDate',
-            //     title: 'Ship Date',
-            //     type: 'date',
-            //     format: 'MM/DD/YYYY',
-            // }, {
-            //     field: 'CompanyName',
-            //     title: 'Company Name',
-            // },
             {
                 field: 'verified',
                 title: 'Status',
                 width: 80,
-                // callback function support for column rendering
+                sortable: 'asc',
                 template: function(row) {
-                    console.log(row);
                     var status = {
                         0: {
                             'title': 'Pending',
@@ -97,55 +73,10 @@ var KTDatatableRemoteAjaxDemo = function() {
                             'class': ' flaticon2-check-mark color-success',
                             'image': '<i class="icon-2x text-dark-50 flaticon2-cancel"></i>'
                         },
-                        2: {
-                            'title': 'Delivered',
-                            'class': ' label-light-danger'
-                        },
-                        3: {
-                            'title': 'Canceled',
-                            'class': ' label-light-primary'
-                        },
-                        5: {
-                            'title': 'Info',
-                            'class': ' label-light-info'
-                        },
-                        6: {
-                            'title': 'Danger',
-                            'class': ' label-light-danger'
-                        },
-                        7: {
-                            'title': 'Warning',
-                            'class': ' label-light-warning'
-                        },
                     };
-                    console.log(status[row.verified].class);
-                    console.log(status[row.verified].title);
                     return  `<div class=''><i class="` + status[row.verified].class + ` label-inline">` + `</i></div>`;
                 },
             },
-            //     field: 'Type',
-            //     title: 'Type',
-            //     autoHide: false,
-            //     // callback function support for column rendering
-            //     template: function(row) {
-            //         var status = {
-            //             1: {
-            //                 'title': 'Online',
-            //                 'state': 'danger'
-            //             },
-            //             2: {
-            //                 'title': 'Retail',
-            //                 'state': 'primary'
-            //             },
-            //             3: {
-            //                 'title': 'Direct',
-            //                 'state': 'success'
-            //             },
-            //         };
-            //         return '<span class="label label-' + status[row.Type].state + ' label-dot mr-2"></span><span class="font-weight-bold text-' + status[row.Type].state + '">' +
-            //             status[row.Type].title + '</span>';
-            //     },
-            // },
             {
                 field: 'Actions',
                 title: 'Actions',

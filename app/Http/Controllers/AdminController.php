@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\DoorStyle;
 use App\Models\HingeType;
+use App\Models\PaintedDoorOrderTitle;
 use Session;
 
 
@@ -198,6 +199,22 @@ class AdminController extends Controller
             'nav'           => $nav,
             'adminLogin'    => $adminLogin,
         ]);
+    }
+
+    public function onGetOrderList(){
+        $result = PaintedDoorOrderTitle::get();
+
+        for($i = 0; $i < count($result); $i++){
+            $email = User::where('id', $result[$i]['user_id'])->first('email');
+            $result[$i]['user_id'] = $email->email;
+        }
+
+        // var_dump($result[0]['user_id']);
+        return $result;
+    }
+
+    public function onGetOrder(Request $request){
+        var_dump("Coming soon!");
     }
 
 }

@@ -21,5 +21,6 @@ class PaintedDoorOrderTitle extends Model
         'delivery_state',
         'job_ref',
         'mobile',
+        'completed'
     ];
 }

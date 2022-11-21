@@ -90,10 +90,18 @@ Route::post('admin_user_delete',        'Admincontroller@onDeleteUser')         
 Route::post('/admin/onGetChangeUser',   'AdminController@onGetChangeUser')                  ->name('onGetChangeUser');
 Route::post('/admin/onChangeUser',      'AdminController@onChangeUser')                     ->name('onChangeUser');
 
+
+
 Route::get('/door-style',               'AdminController@toDoorStyle')                      ->name('toDoorStyle');
 Route::post('/doorstyle',               'AdminController@onDoorStyle')                      ->name('onDoorStyle');
+
+
 
 Route::get('/hinge-type',               'AdminController@toHingeType')                      ->name('toHingeType');
 Route::post('/hingetpe',                'AdminController@onHingeType')                      ->name('onHingeType');
 
+
+
 Route::get('/admin/order-list',         'AdminController@toOrderList')                      ->name('toOrderList');
+Route::post('/onGetOrderList',          'AdminController@onGetOrderList')                   ->name('onGetOrderList');
+Route::get('/admin/order/{id}',         'AdminController@onGetOrder')                       ->name('onGetOrder');
