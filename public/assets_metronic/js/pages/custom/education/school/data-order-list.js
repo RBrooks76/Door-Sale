@@ -12,7 +12,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 type: 'remote',
                 source: {
                     read: {
-                        url: '/onGetOrderList',
+                        url: '/admin/order-list',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         map: function(raw) {
                             var dataSet = raw;

@@ -14,7 +14,7 @@ session_start();
 */
 
 
-/////////////////////////////////////////////// Dashboard ///////////////////////////////////////////////
+//******************************************************* Dashboard *******************************************************
 Route::get('/',                         'DashboardController@toHome')                       ->name('toHome');
 Route::get('/design',                   'DashboardController@toDesign')                     ->name('toDesign');
 Route::get('/design/{type}',            'DashboardController@toDesignDetail')               ->name('toDesignDetail');
@@ -55,7 +55,7 @@ Route::get('/painted-door-fourth',      'DashboardController@toPaintedDoorFourth
 Route::post('/onPaintedDoorFirstStep',  'DashboardController@onPaintedDoorFirstStep')       ->name('onPaintedDoorFirstStep');
 Route::post('/onPaintedDoorSecondStep', 'DashboardController@onPaintedDoorSecondStep')      ->name('onPaintedDoorSecondStep');
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//**************************************************************************************************************
 
 
 
@@ -71,29 +71,46 @@ Route::post('/onSaveOrder',             'DashboardController@onSaveOrder')      
 
 Route::get('/form_detail/{id}',         'DashboardController@toFormDetail')                 ->name('toFormDetail');
 
-/////////////////////////////////////////////// Admin ///////////////////////////////////////////////
-Route::get('/admin',                    'AdminController@index')                            ->name("toAdminLogin");
-Route::get('/admin/admin',              'AdminController@toAdminList')                      ->name('toAdminList');
-Route::get('/admin/user',               'AdminController@toUserList')                       ->name('toUserList');
-Route::get('/admin/upload',             'AdminController@toUploadImage')                    ->name('toUploadImage');
+//******************************************************* Admin *******************************************************
 
-Route::post('/admin_signin',            'AdminController@onAdminSignin')                    ->name('onAdminSignin');
-Route::get('/admin_signout',            'AdminController@onAdminSignout')                   ->name('onAdminSignout');
-Route::post('/admin_signup',            'AdminController@onAdminSignup')                    ->name('onAdminSignup');
-Route::post('/onGetAdminList',          'AdminController@onGetAdminList')                   ->name('onGetAdminList');
-Route::post('/onGetUserList',           'AdminController@onGetUserList')                    ->name('onGetUserList');
+Route::prefix('admin')->group(function() {
+    Route::get('/login',                    'AdminController@index')                            ->name("toAdminLogin");
+    Route::post('/login',                   'AdminController@onAdminSignin')                    ->name('onAdminSignin');
 
+    Route::get('/admin-list',               'AdminController@toAdminList')                      ->name('toAdminList');
+    Route::post('/admin-list',              'AdminController@onGetAdminList')                   ->name('onGetAdminList');
 
+    Route::get('/user-list',                'AdminController@toUserList')                       ->name('toUserList');
+    Route::post('/user-list',               'AdminController@onGetUserList')                    ->name('onGetUserList');
 
-Route::post('/admin_usersignup',        'Admincontroller@onUserSignup')                     ->name('onUserSignup');
-Route::post('admin_user_delete',        'Admincontroller@onDeleteUser')                     ->name('onDeleteUser');
-Route::post('/admin/onGetChangeUser',   'AdminController@onGetChangeUser')                  ->name('onGetChangeUser');
-Route::post('/admin/onChangeUser',      'AdminController@onChangeUser')                     ->name('onChangeUser');
+    Route::get('/order-list',               'AdminController@toOrderList')                      ->name('toOrderList');
+    Route::post('/order-list',              'AdminController@onGetOrderList')                   ->name('onGetOrderList');
+    Route::get('/order/{id}',               'AdminController@onGetOrder')                       ->name('onGetOrder');
+});
 
 
+// Route::get('/admin',                    'AdminController@index')                            ->name("toAdminLogin");
 
-Route::get('/door-style',               'AdminController@toDoorStyle')                      ->name('toDoorStyle');
-Route::post('/doorstyle',               'AdminController@onDoorStyle')                      ->name('onDoorStyle');
+Route::get('/admin/user-list',              'AdminController@toUserList')                       ->name('toUserList');
+Route::get('/admin/upload',                 'AdminController@toUploadImage')                    ->name('toUploadImage');
+
+// Route::post('/admin_signin',                'AdminController@onAdminSignin')                    ->name('onAdminSignin');
+Route::get('/admin_signout',                'AdminController@onAdminSignout')                   ->name('onAdminSignout');
+Route::post('/admin_signup',                'AdminController@onAdminSignup')                    ->name('onAdminSignup');
+Route::post('/onGetAdminList',              'AdminController@onGetAdminList')                   ->name('onGetAdminList');
+Route::post('/onGetUserList',               'AdminController@onGetUserList')                    ->name('onGetUserList');
+
+
+
+Route::post('/admin_usersignup',            'Admincontroller@onUserSignup')                     ->name('onUserSignup');
+Route::post('admin_user_delete',            'Admincontroller@onDeleteUser')                     ->name('onDeleteUser');
+Route::post('/admin/onGetChangeUser',       'AdminController@onGetChangeUser')                  ->name('onGetChangeUser');
+Route::post('/admin/onChangeUser',          'AdminController@onChangeUser')                     ->name('onChangeUser');
+
+
+
+Route::get('/door-style',                   'AdminController@toDoorStyle')                      ->name('toDoorStyle');
+Route::post('/doorstyle',                   'AdminController@onDoorStyle')                      ->name('onDoorStyle');
 
 
 
@@ -102,6 +119,4 @@ Route::post('/hingetpe',                'AdminController@onHingeType')          
 
 
 
-Route::get('/admin/order-list',         'AdminController@toOrderList')                      ->name('toOrderList');
-Route::post('/onGetOrderList',          'AdminController@onGetOrderList')                   ->name('onGetOrderList');
-Route::get('/admin/order/{id}',         'AdminController@onGetOrder')                       ->name('onGetOrder');
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin;
@@ -33,6 +34,12 @@ class AdminController extends Controller
     }
 
     public function onAdminSignin(Request $request){
+
+        $valid = $request->validate([
+            'email'     => 'required|email',
+            'password'  => 'required',
+        ]);
+
         $is= Admin::where('email', $request->email)
                     ->where('password', $request->password)
                     ->where('type', '0')
