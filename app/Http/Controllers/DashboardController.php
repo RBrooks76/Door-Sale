@@ -677,7 +677,8 @@ class DashboardController extends Controller
     }
 
     public function onCalculation(Request $request){
-
+        // print_r($request);
+        // die();
         $display = [];
         $M = 0;
         $N = 0;
@@ -804,39 +805,40 @@ class DashboardController extends Controller
         ]);
     }
 
-    
+
 
     # Save Order Content
     public function onSaveOrder(Request $request){
-        PaintedDoorOrderContent::create([
-                'serial_number'     => Session::get('SerialNumber'),
-                'user_id'           => Session::get('isLogin'),
-                'category'          => $request->category == null ? '' : $request->category,
-                'finish'            => $request->finish == null ? '' : $request->finish,
-                'style'             => $request->style == null ? '' : $request->style,
-                'material'          => $request->material == null ? '' : $request->material,
-                'colour'            => $request->colour == null ? '' : $request->colour,
-                'finish_first'      => $request->finish_first == null ? '' : $request->finish_first,
-                'finish_second'     => $request->finish_second == null ? '' : $request->finish_second,
-                'finish_third'      => $request->finish_third == null ? '' : $request->finish_third,
-                'finish_fourth'     => $request->finish_fourth == null ? '' : $request->finish_fourth,
-                'finish_fifth'      => $request->finish_fifth == null ? '' : $request->finish_fifth,
-                'finish_sixth'      => $request->finish_sixth == null ? '' : $request->finish_sixth,
-                'dimension_first'   => $request->dimension_first == null ? '' : $request->dimension_first,
-                'dimension_second'  => $request->dimension_second == null ? '' : $request->dimension_second,
-                'dimension_third'   => $request->dimension_third == null ? '' : $request->dimension_third,
-                'dimension_fourth'  => $request->dimension_fourth == null ? '' : $request->dimension_fourth,
-                'hardware_first'    => $request->hardware_first == null ? '' : $request->hardware_first,
-                'hardware_second'   => $request->hardware_second == null ? '' : $request->hardware_second,
-                'hardware_third'    => $request->hardware_third == null ? '' : $request->hardware_third,
-                'hardware_fourth'   => $request->hardware_fourth == null ? '' : $request->hardware_fourth,
-                'hardware_fifth'    => $request->hardware_fifth == null ? '' : $request->hardware_fifth,
-                'total_amount'      => $request->total_amount == null ? '' : $request->total_amount,
-                'comment'           => $request->comment == null ? '' : $request->comment,
-        ]);
+        console.log($request);
+        // PaintedDoorOrderContent::create([
+        //         'serial_number'     => Session::get('SerialNumber'),
+        //         'user_id'           => Session::get('isLogin'),
+        //         'category'          => $request->category == null ? '' : $request->category,
+        //         'finish'            => $request->finish == null ? '' : $request->finish,
+        //         'style'             => $request->style == null ? '' : $request->style,
+        //         'material'          => $request->material == null ? '' : $request->material,
+        //         'colour'            => $request->colour == null ? '' : $request->colour,
+        //         'finish_first'      => $request->finish_first == null ? '' : $request->finish_first,
+        //         'finish_second'     => $request->finish_second == null ? '' : $request->finish_second,
+        //         'finish_third'      => $request->finish_third == null ? '' : $request->finish_third,
+        //         'finish_fourth'     => $request->finish_fourth == null ? '' : $request->finish_fourth,
+        //         'finish_fifth'      => $request->finish_fifth == null ? '' : $request->finish_fifth,
+        //         'finish_sixth'      => $request->finish_sixth == null ? '' : $request->finish_sixth,
+        //         'dimension_first'   => $request->dimension_first == null ? '' : $request->dimension_first,
+        //         'dimension_second'  => $request->dimension_second == null ? '' : $request->dimension_second,
+        //         'dimension_third'   => $request->dimension_third == null ? '' : $request->dimension_third,
+        //         'dimension_fourth'  => $request->dimension_fourth == null ? '' : $request->dimension_fourth,
+        //         'hardware_first'    => $request->hardware_first == null ? '' : $request->hardware_first,
+        //         'hardware_second'   => $request->hardware_second == null ? '' : $request->hardware_second,
+        //         'hardware_third'    => $request->hardware_third == null ? '' : $request->hardware_third,
+        //         'hardware_fourth'   => $request->hardware_fourth == null ? '' : $request->hardware_fourth,
+        //         'hardware_fifth'    => $request->hardware_fifth == null ? '' : $request->hardware_fifth,
+        //         'total_amount'      => $request->total_amount == null ? '' : $request->total_amount,
+        //         'comment'           => $request->comment == null ? '' : $request->comment,
+        // ]);
     }
 
-   
+
 
     # To Order Content
     public function toPaintedDoor(Request $request){
