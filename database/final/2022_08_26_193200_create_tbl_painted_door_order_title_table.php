@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("delivery_state");
             $table->string("job_ref");
             $table->string("mobile");
+            $table->string('completed');
             $table->timestamps();
         });
     }

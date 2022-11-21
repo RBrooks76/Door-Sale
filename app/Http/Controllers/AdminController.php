@@ -190,4 +190,14 @@ class AdminController extends Controller
         return redirect()->route('toUserList');
     }
 
+    public function toOrderList(){
+        $adminLogin = '';
+        $nav = 'orders';
+
+        return view('Admin.Order.index', [
+            'nav'           => $nav,
+            'adminLogin'    => $adminLogin,
+        ]);
+    }
+
 }

@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu menu-item-rel {{$nav == 'student' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+                <li class="menu-item menu-item-submenu menu-item-rel {{ $nav == 'student' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
                     <a href="" class="menu-link menu-toggle">
                         <span class="menu-text">Products</span>
                         <span class="menu-desc"></span>
@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu menu-item-rel {{$nav == 'indexes' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+                <li class="menu-item menu-item-submenu menu-item-rel {{ $nav == 'indexes' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="menu-text">Add Indexes</span>
                         <span class="menu-desc"></span>
@@ -86,14 +86,24 @@
                         </ul>
                     </div>
                 </li>
-                {{-- <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="menu-text">Apps</span>
+                <li class="menu-item menu-item-submenu menu-item-rel {{ $nav == 'student' ? ' menu-item-open menu-item-here' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+                    <a href="" class="menu-link menu-toggle">
+                        <span class="menu-text">Order List</span>
                         <span class="menu-desc"></span>
                         <i class="menu-arrow"></i>
                     </a>
+                    <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ route('toOrderList') }}" class="menu-link">
+                                    <span class="menu-text">Order List</span>
+                                    <span class="menu-desc"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
+                {{-- <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="menu-text">Pages</span>
                         <span class="menu-desc"></span>

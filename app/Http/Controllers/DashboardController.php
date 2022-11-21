@@ -902,6 +902,7 @@ class DashboardController extends Controller
             'delivery_state'    => $request->delivery_state,
             'job_ref'           => $request->job_ref,
             'mobile'            => $request->mobile,
+            'completed'         => 0
         ]);
 
         return redirect()->route('toPaintedDoorSecond');

@@ -95,3 +95,5 @@ Route::post('/doorstyle',               'AdminController@onDoorStyle')          
 
 Route::get('/hinge-type',               'AdminController@toHingeType')                      ->name('toHingeType');
 Route::post('/hingetpe',                'AdminController@onHingeType')                      ->name('onHingeType');
+
+Route::get('/admin/order-list',         'AdminController@toOrderList')                      ->name('toOrderList');
