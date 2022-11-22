@@ -21,13 +21,13 @@
 <header class="header" {{ $header=='contact' || $header=='design' ? "style=background-color:black" : ""}}>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 text-center">
                 <div class="header__logo">
                     <a href="#"><img src="{{ asset('image/logo/logo.png')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <nav class="header__menu mobile-menu">
+                <nav class="header__menu header-menu mobile-menu">
                     <ul>
                         <li class="{{ $header == 'home' ? 'active' : '' }}">
                             <a href="{{ route('toHome') }}">Home</a>
@@ -90,15 +90,66 @@
                     </ul>
                 </nav>
             </div>
+            {{-- @if ($isLogin)
+                <div class="col-lg-1">
+                    <div class="header__widget">
+                        <nav class="header__menu header-avatar mobile-menu">
+                            <ul>
+                                <li class="{{ $header == 'forms' ? 'active' : '' }}">
+                                    <a href="#">
+                                        <img src="{{ asset('image/avatars/normal.png') }}" style="width : 60%"/>
+                                    </a>
+                                    <ul class="dropdown text-center">
+                                        <li>WELCOME</li>
+                                        <li><a href="{{ route('toPaintedDoorFirst') }}">Painted Door Order</a></li>
+                                        <li><a href="{{ route('toBenchtopOrder') }}">Benchtop Order</a></li>
+                                        <li><a href="">Instruction</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            @endif --}}
+
             @if ($isLogin)
-                <div class="col-lg-3 flex" style="justify-content : space-between">
+                <div class="col-lg-3">
+                    <div class="header__widget">
+                        <nav class="header__menu header-username mobile-menu">
+                            <ul>
+                                <li class="{{ $header == 'forms' ? 'active' : '' }}">
+                                    <a href="#">
+                                        <h4>{{ $isLogin }}</h4>
+                                    </a>
+                                    <ul class="dropdown text-center">
+                                        <li>WELCOME</li>
+                                        <li><a href="#">Painted Door Order</a></li>
+                                        <li><a href="#">Benchtop Order</a></li>
+                                        <li><a onclick="onLogout()">Log out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__widget">
+                        {{-- <span>Call us for any questions</span> --}}
+
+                    </div>
+                </div>
+                {{-- <div class="col-lg-3 flex" style="justify-content : space-between">
+
+                    <div>
+
+                    </div>
                     <div class="header__widget">
                         <span>{{ $isLogin }}</span>
                     </div>
                     <div class="header__widget" style=>
                         <a onclick="onLogout()">Log out</a>
                     </div>
-                </div>
+                </div> --}}
             @endif
 
         </div>
